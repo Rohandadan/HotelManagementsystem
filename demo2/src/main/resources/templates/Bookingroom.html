@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: skyblue;
+  
+         }
+
+    form {
+    max-width: 400px;
+    margin: 0 auto;
+         }
+
+    label {
+    display: block;
+    margin-bottom: 5px;
+    color:black;
+          }
+
+    input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+           }
+
+    button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+           }
+ 
+    button:hover {
+    background-color: #0056b3;
+           }
+           .container {
+        position: relative; /* Make the container position-relative */
+        display: inline-block; /* Display as inline block */
+    }
+
+    /* Style for the image */
+    img {
+        max-width: 120%; /* Ensure the image doesn't exceed the container's width */
+        height: 100; /* Maintain aspect ratio */
+        position:center;
+        padding-left:10%;
+    }
+    .error{
+    	color:red;
+    	background-color:white;
+    	padding:5px;
+    	text-align:center;
+    }
+    </style>
+</head>
+<body>
+    <h1>Hotel Room Booking</h1>
+    <form action="/bookroom" method="post" th:object="${bookingRequest}">
+    	 <p class="error" th:text="${invalid}"></p>
+		
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" ><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" th:field="*{phoneNumber}" ><br>
+ 
+        <label for="email">Email:</label>
+        <input type="email" th:field="*{email}" ><br>
+		
+        <label for="acRoom">AC Room:</label>
+        <input type="checkbox" th:field="*{isAcRoom}"><br>
+
+        <label for="adults">Adults:</label>
+        <input type="number" th:field="*{adults}" value="1" min="1" ><br>
+
+        <label for="children">Children:</label>
+        <input type="number" th:field="*{children}" value="0" min="0" ><br>
+
+        <label for="fromDate">From Date:</label>
+        <input type="date" th:field="*{fromDate}" ><br>
+
+        <label for="toDate">To Date:</label>
+        <input type="date" th:field="*{toDate}" ><br>
+
+        
+
+        <button type="submit">Book Now</button>
+       
+    </form>
+    	
+   <br>
+
+
+
+    
+</body>
+</html>

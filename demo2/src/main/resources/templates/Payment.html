@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment</h1>
+    <form action="/payment" method="post"th:object="${payment}">
+       
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" th:field="*{cardNumber}" required><br>
+
+        <label for="cardHolderName">Card Holder Name:</label>
+        <input type="text" id="cardHolderName" name="cardHolderName" required><br>
+         <label for="cvv">CVV:</label>
+        <input type="text"  th:field="*{cvv}" required><br>
+
+
+		
+        <label for="amount">Amount:</label>
+        <input type="text" th:value="${roomPrice}" disabled><br>
+        
+        <input type="hidden" name="bookingId" th:value="${bookingId}">
+		<input type="hidden" name="roomPrice" th:value="${roomPrice}">
+		
+        <button type="submit">Pay Now</button>
+    </form>
+     <div class = "container">
+<img src="/Images/tajhotel3.png"/>
+
+</div>
+</body>
+</html>
